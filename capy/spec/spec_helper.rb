@@ -18,6 +18,10 @@ RSpec.configure do |config|
   config.include Capybara::DSL
 end
 
+Capybara.register_driver :selenium_firefox do |app|
+  Capybara::Selenium::Driver.new(app, browser: :firefox, marionette: true)
+end
+
 # Configuração do driver para execução do projeto Capybara
 Capybara.configure do |config|
   # Apontando para o navegador - ":selenium_chrome" (Chrome) ou ":selenium" (Firefox)
@@ -25,5 +29,8 @@ Capybara.configure do |config|
   # Chrome = chromedriver: <https://chromedriver.storage.googleapis.com/index.html>
   # Firefox = Mozilla geckodriver: <https://github.com/mozilla/geckodriver/releases>
   # Aponta para o Firefox
-  config.default_driver = :selenium
+  config.default_driver = :selenium_chrome
+
+  # Definição do timeout (tempo máximo) para o Capybara encontrar um elemento
+  config.default_max_wait_time = 5
 end
