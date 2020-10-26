@@ -1,12 +1,12 @@
 
 # Cria a suite de testes do formulário de Login
-describe 'Forms' do
+describe 'Login Form', :smoke do
 
     # Cria o cenário de teste de login com sucesso 
     it 'login com sucesso' do
         
         # Abre a página em acordo com as configurações do arquivo "spec_helper.rb" do projeto
-        visit 'http://training-wheels-protocol.herokuapp.com/login'
+        visit '/login'
 
         # Preenche o campo do tipo INPUT através do atributo html ID [userId] ou NAME [password]
         fill_in 'userId', with: 'stark'
@@ -19,20 +19,19 @@ describe 'Forms' do
         # Valida através do retorno do método VISIBLE [TRUE]
         expect(find('#flash').visible?).to be true
 
-        # Obtém o texto da mensagem e valida se a String está contida no retorno
-        expect(find('#flash').text).to include 'Olá, Tony Stark. Você acessou a área logada!'
+        # Obtém o texto da mensagem e valida se a String está contida no retorno (exemplo)
+        # expect(find('#flash').text).to include 'Olá, Tony Stark. Você acessou a área logada!'
 
         # Valida se a String está contida no elemento (recurso do próprio Capybara)
         expect(find('#flash')).to have_content 'Olá, Tony Stark. Você acessou a área logada!'
 
         # Adicionalmente, para validar se o texto é idêntico utilizar o EQL
         # expect(find('#flash').text).to eql "Olá, Tony Stark. Você acessou a área logada!\n×"
-
     end
 
     # Aula 04 - Exercício: Um pouco mais sobre notificações
     it 'senha incorreta' do
-        visit 'http://training-wheels-protocol.herokuapp.com/login'
+        visit '/login'
 
         fill_in 'userId', with: 'stark'
         fill_in 'password', with: 'jarvi'
@@ -46,7 +45,7 @@ describe 'Forms' do
     
     
     it 'usuário não cadastrado' do
-        visit 'http://training-wheels-protocol.herokuapp.com/login'
+        visit '/login'
 
         fill_in 'userId', with: 'BopeAndSeal'
         fill_in 'password', with: 'jarvis!'
@@ -57,5 +56,4 @@ describe 'Forms' do
 
         expect(find('#flash')).to have_content 'O usuário informado não está cadastrado!'    
     end
-
 end

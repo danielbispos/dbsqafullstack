@@ -6,7 +6,7 @@ describe 'Caixa de opções', :dropdown do
     # Cenário de teste
     it 'item especifico simples' do
         # Acesso à página
-        visit 'http://training-wheels-protocol.herokuapp.com/dropdown'
+        visit '/dropdown'
         
         # Seleciona conteúdo do tipo OPTION
         select('Loki', from: 'dropdown')
@@ -16,7 +16,7 @@ describe 'Caixa de opções', :dropdown do
 
     it 'item especifico com o find' do
         # Acesso à página
-        visit 'http://training-wheels-protocol.herokuapp.com/dropdown'
+        visit '/dropdown'
         
         # Variável "drop" guarda a busca do método FIND via CSS slector através do elemento classe
         # Caso o elemento não possua um identificador (ID)
@@ -32,7 +32,7 @@ describe 'Caixa de opções', :dropdown do
 
     it 'qualquer item', :sample do
         # Acesso à página
-        visit 'http://training-wheels-protocol.herokuapp.com/dropdown'
+        visit '/dropdown'
         
         # Busca dentro do "avenger-list" ("select")
         drop = find('.avenger-list')

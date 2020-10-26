@@ -3,7 +3,7 @@ describe 'Botões de Radio', :radio do
 
     # Método BEFORE determina que sua execução ocorra antes de todos os cenários
     before(:each) do
-        visit 'http://training-wheels-protocol.herokuapp.com/radios'
+        visit '/radios'
     end
 
     it 'seleçao por ID' do

@@ -1,10 +1,11 @@
 
 # DESCRIBE é uma palavra reservada do rspec - Cria uma suíte de testes
-describe "Meu primeiro script" do
+describe "Meu primeiro script", :hello, :smoke do
+    
     # IT é uma palavra reservada que cria um caso/ script de teste
     it "visitar a página" do
         # Abrir uma página
-        visit "http://training-wheels-protocol.herokuapp.com/"
+        visit "/"
         # Valida título da página
         expect(page.title).to eql "Training Wheels Protocol"
 
